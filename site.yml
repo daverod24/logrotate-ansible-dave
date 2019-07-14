@@ -1,0 +1,25 @@
+---
+- hosts: local
+  become: True
+  vars:
+    logrotate_scripts:
+      - name: apache-logs
+        path: "/var/log/apache2/*.log"
+        options:
+          - daily
+          - size 10M
+          - rotate 3
+          # - missingok
+          # - compress
+          # - delaycompress
+          # - copytruncate
+
+  roles:
+    - logrotate-ansible-dave
+
+  # tasks:
+  #   - name: Verify logrotate config check passes
+  #     shell: logrotate -d "{{ logrotate_conf_dir }}{{ item.name }}"
+  #     with_items: "{{ logrotate_scripts }}"
+  #     register: logrotate_tests
+  #     failed_when: "'error' in logrotate_tests.stderr"
