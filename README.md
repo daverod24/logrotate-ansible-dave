@@ -11,3 +11,7 @@ ansible-playbook -i inventory site.yml -vvv
 [server1]
 apache2 ansible_connection=ssh ansible_user=devops ansible_sudo_password="becomepass"
 ```
+
+
+## testing docker ansible with travisCI
+diferents OS debian, centos, ubuntu.
